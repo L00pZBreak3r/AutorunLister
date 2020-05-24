@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3BAA60AE-304C-428D-B632-89DE109E2A09}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutorunLibrary</RootNamespace>
+    <AssemblyName>AutorunLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutorunFileFinder.cs" />
+    <Compile Include="AutorunFileItem.cs" />
+    <Compile Include="Helpers\DigitalSignatureVerifier.cs" />
+    <Compile Include="Helpers\NativeMethods.cs" />
+    <Compile Include="Helpers\TaskScheduler\Action.cs" />
+    <Compile Include="Helpers\TaskScheduler\ActionCollection.cs" />
+    <Compile Include="Helpers\TaskScheduler\ADVAPI32.cs" />
+    <Compile Include="Helpers\TaskScheduler\CultureSwitcher.cs" />
+    <Compile Include="Helpers\TaskScheduler\DateTimeUtil.cs" />
+    <Compile Include="Helpers\TaskScheduler\EnumGlobalizer.cs" />
+    <Compile Include="Helpers\TaskScheduler\InteropUtil.cs" />
+    <Compile Include="Helpers\TaskScheduler\KERNEL32.cs" />
+    <Compile Include="Helpers\TaskScheduler\Models.cs" />
+    <Compile Include="Helpers\TaskScheduler\NamedValueCollection.cs" />
+    <Compile Include="Helpers\TaskScheduler\NetServerEnum.cs" />
+    <Compile Include="Helpers\TaskScheduler\NotV1SupportedException.cs" />
+    <Compile Include="Helpers\TaskScheduler\NTDSAPI.cs" />
+    <Compile Include="Helpers\TaskScheduler\ReflectionHelper.cs" />
+    <Compile Include="Helpers\TaskScheduler\ResourceReferenceValue.cs" />
+    <Compile Include="Helpers\TaskScheduler\SYSTEMTIME.cs" />
+    <Compile Include="Helpers\TaskScheduler\Task.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskCollection.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskFolder.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskFolderCollection.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskHandlerInterfaces.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskEvent.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskEventWatcher.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskSecurity.cs" />
+    <Compile Include="Helpers\TaskScheduler\TaskService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\TaskScheduler\TaskServiceFactory.cs" />
+    <Compile Include="Helpers\TaskScheduler\Trigger.cs" />
+    <Compile Include="Helpers\TaskScheduler\TriggerCollection.cs" />
+    <Compile Include="Helpers\TaskScheduler\UnboundObject.cs" />
+    <Compile Include="Helpers\TaskScheduler\User.cs" />
+    <Compile Include="Helpers\TaskScheduler\V1Interop\TaskSchedulerV1Interop.cs" />
+    <Compile Include="Helpers\TaskScheduler\V1Interop\V1TriggerControllers.cs" />
+    <Compile Include="Helpers\TaskScheduler\V2Interop\TaskSchedulerV2Interop.cs" />
+    <Compile Include="Helpers\TaskScheduler\V2Interop\V2TriggerControllers.cs" />
+    <Compile Include="Helpers\TaskScheduler\Wildcard.cs" />
+    <Compile Include="Helpers\TaskScheduler\WindowsImpersonatedIdentity.cs" />
+    <Compile Include="Helpers\TaskScheduler\XmlSerializationHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
